@@ -18,10 +18,11 @@ from django.urls import path
 from django.conf.urls import url, include
 from rest_framework.routers import DefaultRouter
 from almacenes.views import AlmacenViewset
+from productos.views import ProductoViewset
 
 router = DefaultRouter()
 router.register(r'almacenes', AlmacenViewset)
-
+router.register(r'productos', ProductoViewset)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
