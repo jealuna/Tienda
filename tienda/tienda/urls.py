@@ -16,8 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
+from rest_framework.routers import DefaultRouter
+from almacenes.views import AlmacenViewset
+
+router = DefaultRouter()
+router.register(r'almacenes', AlmacenViewset)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^api-auth/', include('rest_framework.urls'))
+    url(r'^api-auth/', include('rest_framework.urls')),
+    url(r'^api/', include(router.urls)),
 ]
