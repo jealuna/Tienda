@@ -9,12 +9,12 @@ install:
  - pip install -q coveralls
  
 before_script:
- - python manage.py makemigrations
- - python manage.py migrate
- - python manage.py runserver &
+ - python tienda/manage.py makemigrations
+ - python tienda/manage.py migrate
+ - python tienda/manage.py runserver &
 
 script:
- -  coverage run manage.py test
+ -  coverage run tienda/manage.py test
 
 after_script:
  - coveralls
