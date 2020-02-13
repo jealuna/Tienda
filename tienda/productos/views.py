@@ -9,6 +9,7 @@ from .models import producto
 class ProductoViewset(ModelViewSet):
     queryset = producto.objects.all()
     serializer_class = ProductoSerializer
+    lookup_value_regex = '[^/]+'
     
     def get_serializer(self, *args, **kwargs):
         if "data" in kwargs:

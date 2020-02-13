@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import config from '../../config';
 
-const path = config.API_PATH + 'almacenes/';
+const path = config.API_PATH + 'productos/';
 
 export default class Inicio extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            almacenes: [],
+            productos: [],
             form: {}
         }
 
         this.sendForm = this.sendForm.bind(this)
-        this.deleteAlmacen = this.deleteAlmacen.bind(this)
+        this.deleteProducto = this.deleteProducto.bind(this)
     }
 
     sendForm(ev) {
@@ -29,10 +29,10 @@ export default class Inicio extends Component {
         })
             .catch(err => console.log(err))
             .then(res => res.json())
-            .then(() => this.getalmacenes())
+            .then(() => this.getProductos())
     }
 
-    deleteAlmacen(ev) {
+    deleteProducto(ev) {
         ev.preventDefault()
         let id = ev.target.id
         let pathdelete = path + id + '/'
@@ -45,19 +45,19 @@ export default class Inicio extends Component {
         })
         .then((res) => res.text())
         .then((text) => text.length ? JSON.parse(text) : {})
-        .then(() => this.getalmacenes())
+        .then(() => this.getProductos())
         .catch(err => console.log(err));
     }
 
-    getalmacenes() {
+    getProductos() {
         fetch(path)
         .catch(err => console.error(err))
         .then(res => res.json())
-        .then(almacenes => this.setState({ almacenes }))
+        .then(productos => this.setState({ productos }))
     }
 
     componentDidMount() {
-        this.getalmacenes()
+        this.getProductos()
     }
 
     render() {        
@@ -65,30 +65,30 @@ export default class Inicio extends Component {
                 <div className="App container">
                     <br />
                     <div className="row">
-                    <div className="Almacenes col">
+                    <div className="Productos col">
                             <div className="card" style={{width: 18 + 'rem'}}>
                                 <div className="card-body">
                                 <form className="PostForm">
                                     <div className="form-group">
-                                        <label htmlFor="subinventario">Subinventario</label>
+                                        <label htmlFor="SKU">SKU</label>
                                         <input 
                                             type="text" 
                                             className="form-control" 
-                                            id="subinventario" 
-                                            placeholder="Ingresa el numero del subinventario" 
+                                            id="SKU" 
+                                            placeholder="Ingresa el SKU del producto" 
                                             required
-                                            onChange={(ev) => { this.setState({ form: { ...this.state.form, subinventario: ev.target.value } }) }}
+                                            onChange={(ev) => { this.setState({ form: { ...this.state.form, SKU: ev.target.value } }) }}
                                         />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="nombre">Nombre del almacén</label>
+                                        <label htmlFor="descripcion">Nombre del almacén</label>
                                         <input 
                                             type="text" 
                                             className="form-control" 
-                                            id="nombre" 
-                                            placeholder="Nombre"
+                                            id="descripcion" 
+                                            placeholder="Descripcion"
                                             required
-                                            onChange={(ev) => { this.setState({ form: { ...this.state.form, nombre: ev.target.value } }) }}
+                                            onChange={(ev) => { this.setState({ form: { ...this.state.form, descripcion: ev.target.value } }) }}
                                         />
                                     </div>
                                     <button 
@@ -101,21 +101,21 @@ export default class Inicio extends Component {
                             </div>
                     </div>
                     {
-                         this.state.almacenes.map((almacen) => (
-                            <div key={almacen.subinventario} className="Almacenes col">
+                         this.state.productos.map((producto) => (
+                            <div key={producto.SKU} className="Productos col">
 
                                     <div className="card" style={{width: 18 + 'rem'}}>
                                         <div className="card-body">
                                         <form className="ElementForm">
-                                        <label>Subinventario</label>
-                                            <h5 className="card-title">{almacen.subinventario}</h5>
-                                            <label>Nombre del almacén</label>
-                                            <p className="card-text">{almacen.nombre}</p>
+                                        <label>SKU</label>
+                                            <h5 className="card-title">{producto.SKU}</h5>
+                                            <label>Descripción</label>
+                                            <p className="card-text">{producto.descripcion}</p>
                                             <button 
-                                                id={almacen.subinventario}
+                                                id={producto.SKU}
                                                 type="submit" 
                                                 className="btn btn-danger"
-                                                onClick={this.deleteAlmacen}>Eliminar
+                                                onClick={this.deleteProducto}>Eliminar
                                             </button>
                                             </form>
                                         </div>

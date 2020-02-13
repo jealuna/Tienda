@@ -4,6 +4,7 @@ from django.db import models
 class producto(models.Model):
     """Model definition for producto."""
     SKU = models.CharField(primary_key=True, max_length=300)
+    descripcion = models.CharField(max_length=300, default='Celular')
 
     class Meta:
         """Meta definition for producto."""
