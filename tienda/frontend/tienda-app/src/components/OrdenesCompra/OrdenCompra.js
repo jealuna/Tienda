@@ -15,7 +15,6 @@ export default class Inicio extends Component {
     onFileChangeHandler = (e) => {
         e.preventDefault();
         let selectedFile = e.target.files[0]
-        console.log(selectedFile)
         const formData = new FormData();
         formData.append('file', selectedFile);
         fetch(uploadPath, {
@@ -23,7 +22,6 @@ export default class Inicio extends Component {
             body: formData
         })
         .then(res => {
-            console.log(res)
             if(res.ok) {
                 console.log(res.data);
                 alert("El archivo se subió correctamente")

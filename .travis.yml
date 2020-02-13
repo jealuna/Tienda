@@ -11,7 +11,7 @@ install:
 before_script:
 
 script:
- - cd tienda && python manage.py test
+ - cd tienda && coverage run manage.py test
 
 after_script:
  - coveralls
