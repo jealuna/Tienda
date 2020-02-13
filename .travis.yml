@@ -11,7 +11,7 @@ install:
 before_script:
 
 script:
- -  coverage run --source='.' tienda/manage.py test
+ - tienda/manage.py test
 
 after_script:
  - coveralls
