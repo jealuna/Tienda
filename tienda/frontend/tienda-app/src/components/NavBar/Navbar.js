@@ -16,6 +16,7 @@ class Navbar extends React.Component {
                 <ul className="navbar-nav mr-auto">
                     <li className={'nav-item ' + this.getNavLinkClass("/almacenes")}><NavLink className="nav-link" to="/almacenes">Almacenes</NavLink></li>
                     <li className={'nav-item ' + this.getNavLinkClass("/productos")}><NavLink className="nav-link" to="/productos">Productos</NavLink></li>
+                    <li className={'nav-item ' + this.getNavLinkClass("/ordencompra")}><NavLink className="nav-link" to="/ordencompra">Órdenes de Compra</NavLink></li>
                 </ul>
             </div>
             </nav>
