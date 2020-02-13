@@ -81,7 +81,7 @@ export default class Inicio extends Component {
                                         />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="descripcion">Nombre del almacén</label>
+                                        <label htmlFor="descripcion">Descripción del producto</label>
                                         <input 
                                             type="text" 
                                             className="form-control" 
