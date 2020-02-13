@@ -14,7 +14,7 @@ before_script:
  - python tienda/manage.py runserver &
 
 script:
- -  coverage run tienda/manage.py test
+ -  coverage run --source='.' tienda/manage.py test
 
 after_script:
  - coveralls
