@@ -9,9 +9,6 @@ install:
  - pip install -q coveralls
  
 before_script:
- - python tienda/manage.py makemigrations
- - python tienda/manage.py migrate
- - python tienda/manage.py runserver &
 
 script:
  -  coverage run --source='.' tienda/manage.py test
